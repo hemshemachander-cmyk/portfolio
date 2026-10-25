@@ -4,9 +4,9 @@
 "use strict";
 
 const PORTFOLIO_CONFIG = {
-  email: "",                 // Example: "name@example.com"
-  githubUrl: "",             // Example: "https://github.com/your-username"
-  linkedinUrl: "",           // Example: "https://www.linkedin.com/in/your-profile/"
+  email: "hemshemachander@gmail.com", // Portfolio contact email
+  githubUrl: "https://github.com/hemshemachander-cmyk/portfolio",
+  linkedinUrl: "https://www.linkedin.com/in/hemachander-hems-30725a358",
   projectRepositoryUrl: "",  // Smart Campus Assistant repository URL
   projectDemoUrl: ""         // Smart Campus Assistant live demo URL
 };
@@ -111,7 +111,7 @@ document.querySelectorAll(".topnav a, .rail-nav a, .scroll-cue, .brand, .footer 
   });
 });
 
-const sectionIds = ["home", "about", "skills", "projects", "education", "experience", "contact"];
+const sectionIds = ["home", "about", "skills", "projects", "education", "contact"];
 const navLinks = [...document.querySelectorAll(".topnav a")];
 const railLinks = [...document.querySelectorAll(".rail-link")];
 function setActiveSection(id) {
@@ -171,14 +171,17 @@ if (prefersReducedMotion.matches) {
   revealVisibleElements();
 }
 
-const projectDetailsButton = document.getElementById("projectDetailsButton");
-const projectExtra = document.getElementById("projectExtra");
-projectDetailsButton?.addEventListener("click", () => {
-  const willOpen = projectDetailsButton.getAttribute("aria-expanded") !== "true";
-  projectDetailsButton.setAttribute("aria-expanded", String(willOpen));
-  projectDetailsButton.querySelector("span").textContent = willOpen ? "−" : "＋";
-  projectDetailsButton.childNodes[0].textContent = willOpen ? "HIDE PROJECT DETAILS " : "VIEW PROJECT DETAILS ";
-  projectExtra.hidden = !willOpen;
+document.querySelectorAll("[data-project-toggle]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const willOpen = button.getAttribute("aria-expanded") !== "true";
+    const extraId = button.getAttribute("aria-controls");
+    const extra = extraId ? document.getElementById(extraId) : null;
+    button.setAttribute("aria-expanded", String(willOpen));
+    const marker = button.querySelector("span");
+    if (marker) marker.textContent = willOpen ? "−" : "＋";
+    if (button.childNodes[0]) button.childNodes[0].textContent = willOpen ? "HIDE PROJECT DETAILS " : "VIEW PROJECT DETAILS ";
+    if (extra) extra.hidden = !willOpen;
+  });
 });
 
 function isValidHttpUrl(value) {
@@ -209,73 +212,6 @@ setConfiguredContact("emailDisplay", PORTFOLIO_CONFIG.email, "email");
 setConfiguredContact("githubDisplay", PORTFOLIO_CONFIG.githubUrl, "url");
 setConfiguredContact("linkedinDisplay", PORTFOLIO_CONFIG.linkedinUrl, "url");
 
-const projectLinks = document.getElementById("projectLinks");
-[
-  { label: "OPEN REPOSITORY ↗", url: PORTFOLIO_CONFIG.projectRepositoryUrl },
-  { label: "OPEN LIVE DEMO ↗", url: PORTFOLIO_CONFIG.projectDemoUrl }
-].forEach((item) => {
-  if (!projectLinks || !isValidHttpUrl(item.url)) return;
-  const link = document.createElement("a");
-  link.href = item.url;
-  link.target = "_blank";
-  link.rel = "noopener noreferrer";
-  link.textContent = item.label;
-  projectLinks.appendChild(link);
-});
-
-const contactForm = document.getElementById("contactForm");
-const feedback = document.getElementById("formFeedback");
-const fields = {
-  name: { input: document.getElementById("name"), error: document.getElementById("nameError"), label: "Name" },
-  email: { input: document.getElementById("email"), error: document.getElementById("emailError"), label: "Email" },
-  subject: { input: document.getElementById("subject"), error: document.getElementById("subjectError"), label: "Subject" },
-  message: { input: document.getElementById("message"), error: document.getElementById("messageError"), label: "Message" }
-};
-function validateField(key) {
-  const field = fields[key];
-  const value = field.input.value.trim();
-  let message = "";
-  if (!value) message = `${field.label} is required.`;
-  else if (key === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) message = "Enter a valid email address.";
-  else if (key === "name" && value.length < 2) message = "Please enter at least 2 characters.";
-  else if (key === "subject" && value.length < 2) message = "Please enter a subject.";
-  else if (key === "message" && value.length < 10) message = "Please enter at least 10 characters.";
-  field.error.textContent = message;
-  field.input.setAttribute("aria-invalid", String(Boolean(message)));
-  return !message;
-}
-Object.keys(fields).forEach((key) => {
-  fields[key].input.addEventListener("blur", () => validateField(key));
-  fields[key].input.addEventListener("input", () => {
-    if (fields[key].input.getAttribute("aria-invalid") === "true") validateField(key);
-    if (feedback.textContent) {
-      feedback.textContent = "";
-      feedback.className = "form-feedback";
-    }
-  });
-});
-contactForm?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const valid = Object.keys(fields).map(validateField).every(Boolean);
-  feedback.className = "form-feedback";
-  if (!valid) {
-    feedback.textContent = "Please correct the highlighted fields before continuing.";
-    feedback.classList.add("error");
-    contactForm.querySelector('[aria-invalid="true"]')?.focus();
-    return;
-  }
-  if (PORTFOLIO_CONFIG.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(PORTFOLIO_CONFIG.email)) {
-    const recipient = PORTFOLIO_CONFIG.email;
-    const subject = encodeURIComponent(fields.subject.input.value.trim());
-    const body = encodeURIComponent(`From: ${fields.name.input.value.trim()} <${fields.email.input.value.trim()}>\n\n${fields.message.input.value.trim()}`);
-    feedback.textContent = "Your message is validated. Your email application will open; send the draft there to transmit it.";
-    feedback.classList.add("success");
-    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
-  } else {
-    feedback.textContent = "Validation successful. This is a frontend demo; no message was sent. Add your real email or connect a backend/form service to enable delivery.";
-    feedback.classList.add("success");
-  }
-});
 
 const clock = document.getElementById("clock");
 function updateClock() {
@@ -309,8 +245,8 @@ if (!prefersReducedMotion.matches && window.matchMedia("(hover: hover) and (poin
 }
 
 
-// Restored richer game-style UI sound palette (original synthesized tones, not sampled game audio).
-// Audio starts only after the visitor interacts, as required by browser autoplay rules.
+// Retro arcade-style UI cues, synthesized with Web Audio (not copied from GTA audio).
+// The same short navigation cue is used for menu links and scrolling.
 let gameAudio = null;
 function playGameCue(kind = "menu") {
   try {
@@ -319,40 +255,49 @@ function playGameCue(kind = "menu") {
     gameAudio ||= new AudioCtx();
     if (gameAudio.state === "suspended") gameAudio.resume();
     const now = gameAudio.currentTime;
+    const isConfirm = kind === "confirm";
     const master = gameAudio.createGain();
     master.gain.setValueAtTime(0.0001, now);
-    master.gain.exponentialRampToValueAtTime(kind === "scroll" ? 0.035 : 0.055, now + 0.018);
-    master.gain.exponentialRampToValueAtTime(0.0001, now + (kind === "confirm" ? 0.72 : kind === "scroll" ? 0.28 : 0.42));
+    master.gain.exponentialRampToValueAtTime(isConfirm ? 0.065 : 0.052, now + 0.008);
+    master.gain.exponentialRampToValueAtTime(0.0001, now + (isConfirm ? 0.62 : 0.19));
     const filter = gameAudio.createBiquadFilter();
     filter.type = "lowpass";
-    filter.frequency.setValueAtTime(kind === "scroll" ? 850 : 2400, now);
-    filter.frequency.exponentialRampToValueAtTime(kind === "scroll" ? 260 : 850, now + 0.32);
-    filter.connect(master); master.connect(gameAudio.destination);
+    filter.frequency.setValueAtTime(isConfirm ? 1900 : 1750, now);
+    filter.frequency.exponentialRampToValueAtTime(isConfirm ? 520 : 780, now + (isConfirm ? 0.5 : 0.15));
+    filter.connect(master);
+    master.connect(gameAudio.destination);
 
-    const notes = kind === "confirm" ? [[392,0],[523.25,.09],[659.25,.2],[783.99,.32]] :
-      kind === "scroll" ? [[155,.0],[110,.045]] : [[587.33,0],[783.99,.055]];
+    // Short, slightly descending digital blip for navigation; ascending cue for START.
+    const notes = isConfirm ? [[392, 0], [523.25, 0.08], [659.25, 0.17], [783.99, 0.27]] : [[660, 0], [880, 0.025]];
     notes.forEach(([freq, delay], index) => {
       const osc = gameAudio.createOscillator();
       const voice = gameAudio.createGain();
-      osc.type = kind === "scroll" ? "triangle" : "sine";
+      osc.type = isConfirm ? "sine" : (index === 0 ? "triangle" : "sine");
       osc.frequency.setValueAtTime(freq, now + delay);
-      if (kind === "scroll") osc.frequency.exponentialRampToValueAtTime(freq * .72, now + delay + .16);
+      if (!isConfirm) {
+        osc.frequency.exponentialRampToValueAtTime(freq * (index === 0 ? 0.72 : 0.78), now + delay + 0.11);
+      }
       voice.gain.setValueAtTime(0.0001, now + delay);
-      voice.gain.exponentialRampToValueAtTime(index === 0 ? 0.55 : 0.32, now + delay + .018);
-      voice.gain.exponentialRampToValueAtTime(0.0001, now + delay + (kind === "confirm" ? .31 : .16));
-      osc.connect(voice); voice.connect(filter);
-      osc.start(now + delay); osc.stop(now + delay + (kind === "confirm" ? .34 : .19));
+      voice.gain.exponentialRampToValueAtTime(isConfirm ? (index === 0 ? 0.48 : 0.3) : (index === 0 ? 0.52 : 0.22), now + delay + 0.008);
+      voice.gain.exponentialRampToValueAtTime(0.0001, now + delay + (isConfirm ? 0.28 : 0.12));
+      osc.connect(voice);
+      voice.connect(filter);
+      osc.start(now + delay);
+      osc.stop(now + delay + (isConfirm ? 0.31 : 0.14));
     });
-    if (kind === "confirm") {
+    if (isConfirm) {
       const bass = gameAudio.createOscillator();
       const bassGain = gameAudio.createGain();
-      bass.type = "triangle"; bass.frequency.setValueAtTime(82.4, now);
-      bass.frequency.exponentialRampToValueAtTime(41.2, now + .55);
-      bassGain.gain.setValueAtTime(.0001, now);
-      bassGain.gain.exponentialRampToValueAtTime(.22, now + .035);
-      bassGain.gain.exponentialRampToValueAtTime(.0001, now + .58);
-      bass.connect(bassGain); bassGain.connect(gameAudio.destination);
-      bass.start(now); bass.stop(now + .6);
+      bass.type = "triangle";
+      bass.frequency.setValueAtTime(82.4, now);
+      bass.frequency.exponentialRampToValueAtTime(41.2, now + 0.48);
+      bassGain.gain.setValueAtTime(0.0001, now);
+      bassGain.gain.exponentialRampToValueAtTime(0.2, now + 0.03);
+      bassGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.52);
+      bass.connect(bassGain);
+      bassGain.connect(gameAudio.destination);
+      bass.start(now);
+      bass.stop(now + 0.54);
     }
   } catch (_) { /* Sound is an optional enhancement. */ }
 }
@@ -360,7 +305,7 @@ startButton?.addEventListener("click", () => playGameCue("confirm"), { once: tru
 let lastScrollCue = 0;
 window.addEventListener("scroll", () => {
   if (document.body.classList.contains("portfolio-started") && window.scrollY > 20 && Date.now() - lastScrollCue > 650) {
-    lastScrollCue = Date.now(); playGameCue("scroll");
+    lastScrollCue = Date.now(); playGameCue("menu");
   }
 }, { passive: true });
 document.querySelectorAll(".topnav a, .rail-nav a, .hero-actions a, .brand").forEach((link) => {
