@@ -202,3 +202,54 @@ body:not(.portfolio-started) .flying-car{animation-play-state:paused;}
 .education-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .education-form-note{font-size:11px;line-height:1.6;color:#a7b5d2;margin:0}
 .education-card{min-width:0}
+
+.hero-identity{display:flex;align-items:center;gap:24px}.profile-photo{width:clamp(110px,16vw,190px);aspect-ratio:1;object-fit:cover;object-position:center 25%;border:2px solid var(--orange);border-radius:50%;box-shadow:0 0 0 6px rgba(255,106,0,.10)}@media(max-width:600px){.hero-identity{align-items:flex-start;gap:14px}.profile-photo{width:92px;flex-shrink:0}}
+
+
+/* ===== PORTFOLIO UPDATE: layout fix, hero photo, 7 skills ===== */
+
+/* FIX: the rule `.site-shell>*:not(.game-world-bg){position:relative}` above overrode the
+   fixed side rail / sticky top bar / fixed button, which pushed the hero far down the page. */
+.site-shell>.topbar{position:sticky;top:0;z-index:50}
+.site-shell>.hud-rail{position:fixed;z-index:40}
+.site-shell>.return-start{position:fixed;z-index:35}
+
+/* Hero: photo sits directly beside "Hi, I'm / hemachander k." */
+.hero{grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr)}
+.hero-identity{display:flex;align-items:center;gap:clamp(18px,2.4vw,32px);margin-top:26px}
+.hero-identity .hero-kicker{margin:0 0 8px}
+.hero-titleblock{min-width:0}
+.hero h2{margin:0}
+.hero-hi{display:block;font-size:clamp(1.6rem,2.6vw,2.4rem);line-height:1.05}
+.hero .hero-name{font-size:clamp(2.8rem,5vw,4.8rem);margin-top:2px;overflow-wrap:normal}
+.profile-photo{
+  flex:0 0 auto;width:clamp(120px,13vw,180px);height:clamp(120px,13vw,180px);aspect-ratio:1;
+  object-fit:cover;object-position:center 22%;border-radius:50%;background:#fff;
+  border:2px solid #00f5ff;
+  box-shadow:0 0 0 6px rgba(0,245,255,.10),0 0 28px rgba(0,245,255,.35),0 0 60px rgba(255,77,225,.18)
+}
+.hero-copy{margin-top:26px}
+@media(max-width:960px){.hero{grid-template-columns:1fr .8fr}.hero .hero-name{font-size:clamp(2.6rem,6vw,4rem)}}
+@media(max-width:700px){
+  .hero{grid-template-columns:1fr}
+  .hero-identity{gap:14px;align-items:center;margin-top:20px}
+  .profile-photo{width:92px;height:92px}
+  .hero-hi{font-size:1.4rem}
+  .hero .hero-name{font-size:clamp(2rem,9.4vw,3rem)}
+}
+@media(max-width:360px){.profile-photo{width:76px;height:76px}}
+
+/* Skills: 7 modules -> 4 + 3 on desktop */
+.skills-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.aws-glyph,.sql-glyph{font-size:21px;letter-spacing:.02em;padding-top:5px}
+.react-glyph svg{display:block}
+@media(max-width:1200px){.skills-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:900px){.skills-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){
+  .skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .skill-card:last-child:nth-child(odd){grid-column:1/-1}
+}
+
+/* Readability: dark backing panel behind hero text so it stays legible on the bright city background */
+.hero-content::before{content:"";position:absolute;inset:-30px -40px -30px -36px;z-index:-1;pointer-events:none;border-radius:6px;background:linear-gradient(100deg,rgba(5,7,17,.80),rgba(5,7,17,.58) 72%,rgba(5,7,17,0))}
+@media(max-width:700px){.hero-content::before{inset:-18px -14px -18px -14px;background:linear-gradient(180deg,rgba(5,7,17,.72),rgba(5,7,17,.55))}}
