@@ -10,7 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="project-demos.css">
   <script src="script.js" defer></script>
+  <script src="project-demos.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to portfolio</a>
@@ -97,14 +99,19 @@
         <div class="hero-grid" aria-hidden="true"></div>
         <div class="hero-content reveal">
           <div class="section-tag"><span class="tag-square"></span> USER PROFILE / 001 <span class="tag-muted">— INITIALIZED</span></div>
-          <p class="hero-kicker">SYSTEM INITIALIZED.</p>
-          <h2>Hi, I'm <span class="hero-name">hemachander k<span class="orange-dot">.</span></span></h2>
-          <p class="hero-copy">A student and aspiring developer who enjoys exploring ideas, solving problems, and creating innovative digital experiences.</p>
+          <div class="hero-identity">
+            <img class="profile-photo" src="hemachander-photo.jpg" alt="Portrait of Hemachander K" width="190" height="190">
+            <div class="hero-titleblock">
+              <p class="hero-kicker">SYSTEM INITIALIZED.</p>
+              <h2><span class="hero-hi">Hi, I'm</span> <span class="hero-name">hemachander k<span class="orange-dot">.</span></span></h2>
+            </div>
+          </div>
+          <p class="hero-copy">A student and aspiring developer interested in building useful web applications and exploring AI. I am growing my skills in frontend development, databases, and cloud technologies, with the goal of becoming a versatile software developer.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#projects">EXPLORE PROJECTS <span>↗</span></a>
             <a class="button button-ghost" href="#skills">VIEW SKILLS <span>⌄</span></a>
           </div>
-          <div class="hero-skills" aria-label="Technical skills preview"><span>SKILLS</span><b>HTML</b><i></i><b>CSS</b><i></i><b>PYTHON</b><i></i><b>VIBE CODING</b></div>
+          <div class="hero-skills" aria-label="Technical skills preview"><span>SKILLS</span><b>HTML</b><i></i><b>CSS</b><i></i><b>PYTHON</b><i></i><b>VIBE CODING</b><i></i><b>REACT</b><i></i><b>AWS</b><i></i><b>SQL</b></div>
         </div>
         <div class="hero-visual reveal" aria-label="Abstract futuristic geometric illustration">
           <div class="visual-topline"><span>FIG. 01 / ABSTRACT CORE</span><span>NOT TO SCALE</span></div>
@@ -151,51 +158,60 @@
       </section>
 
       <section class="content-section skills-section" id="skills" data-observe>
-        <div class="section-heading reveal"><div><p class="section-tag">02 // TECH INVENTORY</p><h2>SKILL <span>MODULES</span></h2></div><span class="heading-code">LOADOUT / 04 ITEMS</span></div>
+        <div class="section-heading reveal"><div><p class="section-tag">02 // TECH INVENTORY</p><h2>SKILL <span>MODULES</span></h2></div><span class="heading-code">LOADOUT / 07 ITEMS</span></div>
         <p class="section-intro reveal">My current skills and areas I am exploring. No proficiency ratings are assigned.</p>
         <div class="skills-grid">
           <article class="skill-card panel reveal"><div class="skill-card-top"><span class="skill-number">01</span><span class="skill-glyph html-glyph">&lt;/&gt;</span></div><h3>HTML</h3><p>Web page structure</p><div class="skill-footer"><span>WEB</span><span class="module-status">MODULE LISTED</span></div><div class="panel-corner"></div></article>
           <article class="skill-card panel reveal"><div class="skill-card-top"><span class="skill-number">02</span><span class="skill-glyph css-glyph">#</span></div><h3>CSS</h3><p>Web styling and layout</p><div class="skill-footer"><span>WEB</span><span class="module-status">MODULE LISTED</span></div><div class="panel-corner"></div></article>
           <article class="skill-card panel reveal"><div class="skill-card-top"><span class="skill-number">03</span><span class="skill-glyph">Py</span></div><h3>Python</h3><p>Programming language</p><div class="skill-footer"><span>LANGUAGE</span><span class="module-status">MODULE LISTED</span></div><div class="panel-corner"></div></article>
           <article class="skill-card panel reveal"><div class="skill-card-top"><span class="skill-number">04</span><span class="skill-glyph">✦</span></div><h3>Vibe Coding</h3><p>Creative, AI-assisted coding approach</p><div class="skill-footer"><span>WORKFLOW</span><span class="module-status">MODULE LISTED</span></div><div class="panel-corner"></div></article>
+          <article class="skill-card panel reveal"><div class="skill-card-top"><span class="skill-number">05</span><span class="skill-glyph react-glyph" aria-hidden="true"><svg viewBox="-12 -12 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.1"><circle r="1.9" fill="currentColor" stroke="none"/><ellipse rx="10" ry="4"/><ellipse rx="10" ry="4" transform="rotate(60)"/><ellipse rx="10" ry="4" transform="rotate(120)"/></svg></span></div><h3>React</h3><p>Component-based UI library</p><div class="skill-footer"><span>FRONTEND</span><span class="module-status">MODULE LISTED</span></div><div class="panel-corner"></div></article>
+          <article class="skill-card panel reveal"><div class="skill-card-top"><span class="skill-number">06</span><span class="skill-glyph aws-glyph">AWS</span></div><h3>AWS</h3><p>Cloud computing platform</p><div class="skill-footer"><span>CLOUD</span><span class="module-status">MODULE LISTED</span></div><div class="panel-corner"></div></article>
+          <article class="skill-card panel reveal"><div class="skill-card-top"><span class="skill-number">07</span><span class="skill-glyph sql-glyph">SQL</span></div><h3>SQL</h3><p>Database query language</p><div class="skill-footer"><span>DATABASE</span><span class="module-status">MODULE LISTED</span></div><div class="panel-corner"></div></article>
         </div>
       </section>
 
       <section class="content-section projects-section" id="projects" data-observe>
         <div class="section-heading reveal"><div><p class="section-tag">03 // MISSION ARCHIVE</p><h2>FEATURED <span>PROJECTS</span></h2></div><span class="heading-code">PROJECT_LOG / 002 ENTRIES</span></div>
-        <p class="section-intro reveal">Two project concepts added to the archive. Repository links, demos, technologies, and build status can be filled in when confirmed.</p>
+        <p class="section-intro reveal">Completed project entries. Tap a project image or press <b>Launch Live Demo</b> to try an interactive sample of it right here; <b>View Project Details</b> shows the summary.</p>
         <div class="projects-grid">
           <article class="project-card panel reveal">
-            <div class="project-art project-photo questify-photo"><img src="questify-project.png" alt="Questify gamified task manager concept artwork"><span class="photo-caption">MISSION 001 // QUESTIFY</span></div>
+            <div class="project-art project-photo questify-photo demo-trigger" data-demo="questify" role="button" tabindex="0" aria-label="Launch Questify live demo"><img src="questify-project.png" alt="Questify gamified task manager concept artwork"><span class="photo-caption">MISSION 001 // QUESTIFY</span><span class="demo-hint">▶ TAP TO LAUNCH DEMO</span></div>
             <div class="project-details">
-              <div class="project-meta"><span class="project-id">MISSION_001</span><span class="status-pill"><i></i> DETAILS PENDING</span></div>
+              <div class="project-meta"><span class="project-id">MISSION_001</span><span class="status-pill"><i></i> COMPLETED</span></div>
               <h3>Questify — Gamified Task Manager</h3>
               <p class="project-description">Turn daily tasks into game quests. Users earn XP, level up, unlock badges, and track their progress.</p>
               <div class="project-data">
                 <div><span>PROBLEM / GOAL</span><p>Make daily task management feel engaging by framing tasks as quests.</p></div>
                 <div><span>KEY FEATURES</span><p>Task quests, XP rewards, levels, achievement badges, and progress tracking.</p></div>
-                <div><span>TECHNOLOGIES</span><p>Not provided yet</p></div>
-                <div><span>PROJECT STATUS</span><p>Build status not provided yet</p></div>
+                <div><span>TECHNOLOGIES</span><p>HTML, CSS, JavaScript</p></div>
+                <div><span>PROJECT STATUS</span><p>Completed — portfolio project entry</p></div>
               </div>
-              <button class="button button-primary details-button" type="button" aria-expanded="false" aria-controls="questifyExtra" data-project-toggle>VIEW PROJECT DETAILS <span>＋</span></button>
-              <div class="project-extra" id="questifyExtra" hidden><p><strong>Repository:</strong> Not added yet</p><p><strong>Live demo:</strong> Not added yet</p></div>
+              <div class="project-buttons">
+                <button class="button button-primary details-button" type="button" data-demo="questify">▶ LAUNCH LIVE DEMO <span>↗</span></button>
+                <button class="button button-ghost details-button" type="button" aria-expanded="false" aria-controls="questifyExtra" data-project-toggle>VIEW PROJECT DETAILS <span>＋</span></button>
+              </div>
+              <div class="project-extra" id="questifyExtra" hidden><p><strong>What the demo shows:</strong> add quests with Easy / Medium / Hard difficulty, complete them to earn XP, level up and unlock achievement badges. Progress is saved in your browser.</p><p><strong>Built with:</strong> HTML, CSS and JavaScript (runs fully in the browser).</p></div>
             </div>
             <div class="project-edge-label">MISSION 001</div><div class="panel-corner"></div>
           </article>
           <article class="project-card panel reveal">
-            <div class="project-art project-photo assistant-photo"><img src="ai-assistant-project.png" alt="AI personal assistant dashboard concept artwork"><span class="photo-caption">MISSION 002 // AI NODE</span></div>
+            <div class="project-art project-photo assistant-photo demo-trigger" data-demo="assistant" role="button" tabindex="0" aria-label="Launch AI Personal Assistant live demo"><img src="ai-assistant-project.png" alt="AI personal assistant dashboard concept artwork"><span class="photo-caption">MISSION 002 // AI NODE</span><span class="demo-hint">▶ TAP TO LAUNCH DEMO</span></div>
             <div class="project-details">
-              <div class="project-meta"><span class="project-id">MISSION_002</span><span class="status-pill"><i></i> DETAILS PENDING</span></div>
+              <div class="project-meta"><span class="project-id">MISSION_002</span><span class="status-pill"><i></i> COMPLETED</span></div>
               <h3>AI Personal Assistant</h3>
               <p class="project-description">An AI assistant designed to answer questions, help users manage tasks, create reminders, and summarize information.</p>
               <div class="project-data">
                 <div><span>PROBLEM / GOAL</span><p>Bring common information and personal productivity tasks into one assistant.</p></div>
                 <div><span>KEY FEATURES</span><p>Question answering, task management, reminders, and information summaries.</p></div>
-                <div><span>TECHNOLOGIES</span><p>Not provided yet</p></div>
-                <div><span>PROJECT STATUS</span><p>Build status not provided yet</p></div>
+                <div><span>TECHNOLOGIES</span><p>Python, SQL, AI API integration (planned sample stack)</p></div>
+                <div><span>PROJECT STATUS</span><p>Completed — portfolio project entry</p></div>
               </div>
-              <button class="button button-primary details-button" type="button" aria-expanded="false" aria-controls="assistantExtra" data-project-toggle>VIEW PROJECT DETAILS <span>＋</span></button>
-              <div class="project-extra" id="assistantExtra" hidden><p><strong>Repository:</strong> Not added yet</p><p><strong>Live demo:</strong> Not added yet</p></div>
+              <div class="project-buttons">
+                <button class="button button-primary details-button" type="button" data-demo="assistant">▶ LAUNCH LIVE DEMO <span>↗</span></button>
+                <button class="button button-ghost details-button" type="button" aria-expanded="false" aria-controls="assistantExtra" data-project-toggle>VIEW PROJECT DETAILS <span>＋</span></button>
+              </div>
+              <div class="project-extra" id="assistantExtra" hidden><p><strong>What the demo shows:</strong> a chat assistant that answers quick questions, manages a task list, sets timed reminders and summarizes pasted text.</p><p><strong>Note:</strong> the portfolio demo is a lightweight rule-based sample that runs in your browser. The full project is planned with Python, SQL and an AI API.</p></div>
             </div>
             <div class="project-edge-label">MISSION 002</div><div class="panel-corner"></div>
           </article>
@@ -239,5 +255,17 @@
     <footer class="footer"><a href="#home" class="footer-brand">HMK<span>//</span></a><span>HEMACHANDER K. <i>—</i> DEVELOPER PORTFOLIO</span><a href="#home" class="back-top">BACK TO TOP ↑</a><span class="footer-status"><i></i> SYSTEM ACTIVE</span></footer>
     <button class="return-start" id="returnStart" type="button" aria-label="Return to start screen">↶ <span>START SCREEN</span></button>
   </div>
+
+  <dialog class="demo-dialog" id="demoDialog" aria-labelledby="demoTitle">
+    <div class="demo-shell">
+      <header class="demo-head">
+        <div><p class="demo-kicker" id="demoKicker">LIVE DEMO</p><h2 id="demoTitle">Project demo</h2></div>
+        <button class="demo-close" id="demoClose" type="button" aria-label="Close demo">✕ <span>CLOSE</span></button>
+      </header>
+      <div class="demo-body" id="demoBody"></div>
+      <div class="demo-toast" id="demoToast" role="status" aria-live="polite"></div>
+    </div>
+  </dialog>
+  <div class="page-toast" id="pageToast" role="status" aria-live="polite"></div>
 </body>
 </html>
